@@ -3,7 +3,7 @@
 	<iostream>
 	"headers.h"
 
-1487512218 c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\headers.h
+1487518448 c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\headers.h
 	"World/World.h"
 	"World/Location.h"
 	"World/Object.h"
@@ -33,10 +33,11 @@
 	<iostream>
 	<vector>
 
-1487494338 c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\people\player.h
+1487517287 c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\people\player.h
 	<iostream>
+	<algorithm>
 
-1487509711 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\people\player.cpp
+1487519071 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\people\player.cpp
 	"../headers.h"
 
 1487494340 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\tools\command.cpp
@@ -63,8 +64,8 @@
 1487508933 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\world\object.cpp
 	"../headers.h"
 
-1487513048 c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\tools\direction.h
+1487513504 c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\tools\direction.h
 
-1487513055 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\tools\direction.cpp
+1487518731 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\tools\direction.cpp
 	"../headers.h"
 

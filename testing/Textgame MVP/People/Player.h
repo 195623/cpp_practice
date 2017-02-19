@@ -1,4 +1,6 @@
 #include <iostream>
+#include <algorithm>
+
 class Location ;
 class Command ;
 
@@ -11,6 +13,8 @@ public:
     std::string Look_Around();
     std::string Execute_Command( Command command ) ;
     Object* Find_Object( std::string objectName ) ;
+
+    bool Is_Direction( std::string text ) ;
 
 private:
     Location* location ;

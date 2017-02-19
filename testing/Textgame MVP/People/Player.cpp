@@ -84,44 +84,73 @@ string Player::Execute_Command( Command command )
 
     if( action == "examine" || action == "check" || action == "x" )
     {
-        if ( preposition == "" ) output = foundTarget->Get_description() ;
+        if( target != "" )
+        {
+            if ( preposition == "" ) output = foundTarget->Get_description() ;
 
-        else output = "\"" + action + "\" can't be used with prepositions in the sentence." ;
+            else output = "\"" + action + "\" can't be used with prepositions in the sentence." ;
+        }
+        else output = "Examine what?" ;
+
     }
     else if ( action == "use" )
     {
         if( preposition == "" )
         {
-            if( foundTarget->Is_Path() )
+            if( target != "" )
             {
-                Path* foundPath = (Path*) foundTarget ;
-
-                Path* pathExit = foundPath->Get_targetPointer() ;
-
-                if( pathExit != NULL )
+                if( foundTarget->Is_Path() )
                 {
-                    Location* exitLocation = pathExit->Get_location() ;
+                    Path* foundPath = (Path*) foundTarget ;
 
-                    if( exitLocation != NULL )
+                    Path* pathExit = foundPath->Get_targetPointer() ;
+
+                    if( pathExit != NULL )
                     {
-                        this->location = exitLocation ;
-                        output = foundPath->Get_useDescription() ;
+                        Location* exitLocation = pathExit->Get_location() ;
+
+                        if( exitLocation != NULL )
+                        {
+                            this->location = exitLocation ;
+                            output = foundPath->Get_useDescription() ;
+                        }
+                        else output = "[The exit-path of this path has a NULL location pointer.]" ;
                     }
-                    else output = "[The exit-path of this path has a NULL location pointer.]" ;
+                    else output = "[This path has an empty pointer to its exit-path.]" ;
                 }
-                else output = "[This path has an empty pointer to its exit-path.]" ;
+                else output = foundTarget->Get_useDescription() ;
             }
-            else output = foundTarget->Get_useDescription() ;
+            else output = "Use what?" ;
         }
         else
         {
             output = "[No commands with prepositions... yet." ;
         }
     }
+    else if ( tool == "" && preposition == "" && target == "" && Is_Direction( action ) )
+    {
+        output = "This is a directional command." ;
+    }
     else output = "[Invalid action-word.]";
 
     return output ;
 }
+
+bool Player::Is_Direction( string text )
+{
+
+    extern string dirs[] ;
+    string* str = NULL ;
+
+    str = find(dirs,dirs+10,text) ;
+
+    auto emptyITERATOR = find(dirs,dirs+10,"") ;
+
+    if( str != emptyITERATOR ) return true ;
+
+    return false ;
+}
+
 
 Object* Player::Find_Object( std::string objectName )
 {

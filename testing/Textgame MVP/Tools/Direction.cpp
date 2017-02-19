@@ -11,13 +11,18 @@ string Direction::Get_name()
     return this->name ;
 }
 
+string dirs[] = {"u","nw","n","ne","w","e","sw","s","se","d"} ;
+
 int Direction::Get_SortingOrder()
 {
-    int order = 0 ;
+     // copy: Player::Is_Direction()
 
-    // count order
+    for( unsigned int i = 0; i < sizeof(dirs)/sizeof(dirs[0]); i++ )
+    {
+        if( this->name == dirs[i] ) return i+1 ;
+    }
 
-    return order ;
+    return -1 ;
 }
 
 bool Direction::Is_Valid()
