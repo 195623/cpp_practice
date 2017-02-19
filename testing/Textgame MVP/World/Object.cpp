@@ -1,10 +1,11 @@
 #include "../headers.h"
 using namespace std ;
 
-Object::Object(string name, string description, bool pickable )
+Object::Object(string name, string description, string useDescription, bool pickable )
 {
     this->name = name ;
     this->description = description ;
+    this->useDescription = useDescription;
     this->pickable = pickable ;
 }
 
@@ -21,6 +22,11 @@ string Object::Get_name()
 string Object::Get_description()
 {
     return this->description ;
+}
+
+string Object::Get_useDescription()
+{
+    return this->useDescription ;
 }
 
 bool Object::Get_pickable()

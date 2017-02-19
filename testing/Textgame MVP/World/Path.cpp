@@ -2,7 +2,11 @@
 
 using namespace std ;
 
-Path::Path( string name, string description, string targetDirectory, Location* location ) : Object(name,description,false)
+Path::Path( string name,
+            string description,
+            string useDescription,
+            string targetDirectory,
+            Location* location ) : Object(name,description,useDescription,false)
 {
     this->targetDirectory = targetDirectory ;
     this->location = location ;

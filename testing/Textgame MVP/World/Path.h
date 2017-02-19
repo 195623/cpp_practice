@@ -4,7 +4,7 @@ class Location ;
 class Path : public Object
 {
 public:
-    Path( std::string name,std::string description, std::string targetDirectory, Location* location = NULL ) ;
+    Path( std::string name,std::string description, std::string useDescription, std::string targetDirectory, Location* location = NULL ) ;
     void Insert_Location_Pointer( Location* location ) ;
     void Connect_Path( Path* targetPointer ) ;
 

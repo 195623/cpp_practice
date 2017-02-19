@@ -2,6 +2,8 @@
 
 Destructors for classes and pointers.
 
+Take...drop
+
 try...catch
 
 if ( x == "on" ) ------> if ( Is_Preposition( x ) )

@@ -1,0 +1,64 @@
+# depslib dependency file v1.0
+1487494344 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\main.cpp
+	<iostream>
+	"headers.h"
+
+1487494343 c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\headers.h
+	"World/World.h"
+	"World/Location.h"
+	"World/Object.h"
+	"World/Path.h"
+	"Tools/Command.h"
+	"Tools/Parser.h"
+	"People/Player.h"
+
+1487494341 c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\world\world.h
+	<iostream>
+	<vector>
+
+1487494341 c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\world\location.h
+	<iostream>
+	<vector>
+
+1487500741 c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\world\object.h
+	<iostream>
+
+1487500809 c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\world\path.h
+
+1487494340 c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\tools\command.h
+	<iostream>
+
+1487494340 c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\tools\parser.h
+	<iostream>
+	<vector>
+
+1487494338 c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\people\player.h
+	<iostream>
+
+1487501085 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\people\player.cpp
+	"../headers.h"
+
+1487494340 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\tools\command.cpp
+	"../headers.h"
+
+1487494340 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\tools\parser.cpp
+	"../headers.h"
+
+1487500714 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\world\definitions.cpp
+	<iostream>
+	<vector>
+	"../headers.h"
+
+1487494341 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\world\location.cpp
+	"../headers.h"
+
+1487500505 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\world\path.cpp
+	"../headers.h"
+
+1487494341 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\world\world.cpp
+	"../headers.h"
+	<windows.h>
+
+1487500426 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\world\object.cpp
+	"../headers.h"
+

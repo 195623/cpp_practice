@@ -10,7 +10,7 @@ void Join_Two_Paths( Path* path1, Path* path2) ;
 void Define_Locations( vector<Location*>* locations )
 {
     Location* location ;
-    string name, description ;
+    string name, description, useDescription ;
     vector<Object*> objects ;
 
     objects.clear() ;
@@ -22,8 +22,16 @@ void Define_Locations( vector<Location*>* locations )
 
     location = new Location(name,description) ;
 
-    objects.push_back( new Object("rock","Gray and small.",true) ) ;
-    objects.push_back( new Path("door","Simple and wooden.","Room #2/door",location) ) ;
+    objects.push_back( new Object("rock",
+                                  "Gray and small.",
+                                  "You throw it into the air and swiftly grab it again.",
+                                  true) ) ;
+
+    objects.push_back( new Path("door",
+                                "Simple and wooden.",
+                                "You push the door open, and enter the room beyond.",
+                                "Room #2/door",
+                                location) ) ;
 
     location->Set_objects(objects) ;
 
@@ -42,7 +50,11 @@ void Define_Locations( vector<Location*>* locations )
 
     location = new Location(name,description);
 
-    objects.push_back( new Path("door","Simple and wooden.","Room #1/door",location) ) ;
+    objects.push_back( new Path("door",
+                                "Simple and wooden.",
+                                "You pull the door open, and enter the next room.",
+                                "Room #1/door",
+                                location) ) ;
 
     location->Set_objects(objects) ;
 
