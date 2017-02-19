@@ -14,6 +14,11 @@ bool Object::Is_Path()
     return false ;
 }
 
+string Object::Display()
+{
+    return "    " + this->name ;
+}
+
 string Object::Get_name()
 {
     return this->name ;

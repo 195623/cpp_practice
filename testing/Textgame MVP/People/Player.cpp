@@ -35,19 +35,18 @@ Command Player::Get_Command()
 
 string Player::Look_Around()
 {
-    vector<Object*> localObjects = this->location->Show_objects() ;
+    vector<Object*> localObjects = this->location->Get_objects() ;
 
     std::string objectList = "" ;
 
     for( vector<Object*>::iterator it = localObjects.begin() ; it != localObjects.end() ; it++ )
     {
-        objectList += "  " ;
-        objectList += (*it)->Get_name() ;
+        objectList += (*it)->Display();
         objectList += '\n' ;
     }
 
-    return this->location->Show_name() + "\n\n" +
-           this->location->Show_description() + "\n\n" +
+    return this->location->Get_name() + "\n\n" +
+           this->location->Get_description() + "\n\n" +
            objectList + '\n' ;
 }
 
@@ -78,6 +77,7 @@ string Player::Execute_Command( Command command )
         if( foundTarget == NULL ) output += "\nThere are no " + target + "s here." ;
     }
 
+/*return*/
     if( output != "" ) return output ;
 
 
@@ -120,64 +120,12 @@ string Player::Execute_Command( Command command )
     }
     else output = "[Invalid action-word.]";
 
-    /*if( action == "examine" || action == "check" || action == "x" )
-    {
-        if ( preposition == "" )
-        {
-            if ( target != "" )
-            {
-                foundObject = Find_Object(target) ;
-
-                if( foundObject != NULL ) return foundObject->Get_description() ;
-
-                else return "There is no \"" + target + "\" here." ;
-            }
-
-            else output = "Examine what?" ;
-        }
-        else output = "[Prepositions are not implemented yet.]" ;
-
-    }
-    else if ( action == "use" )
-    {
-        if( tool == "" && preposition == "" )
-        {
-            if( target != "" )
-            {
-                foundObject = Find_Object(target) ;
-
-                if ( foundObject != NULL )
-                {
-                    output = "You used the " + target + "." ;
-
-                    if( foundObject->Is_Path() )
-                    {
-                        Path* foundPath = (Path*) foundObject ;
-                        Path* targetPointer = foundPath->Get_targetPointer() ;
-
-                        if( targetPointer != NULL )
-                        {
-                            Location* targetLocation = foundPath->Get_targetPointer()->Get_location() ;
-
-                            if( targetLocation != NULL ) this->location = targetLocation ;
-                            else output += "\nThe path's target's location pointer is NULL." ;
-                        }
-                        else output += "\nPath's targetPointer is null." ;
-                    }
-                }
-
-                else output = "There is no " + target + " here." ;
-            }
-        }
-    }
-    else output = "[Invalid action-word.]" ;*/
-
     return output ;
 }
 
 Object* Player::Find_Object( std::string objectName )
 {
-    vector<Object*> localObjects = this->location->Show_objects() ;
+    vector<Object*> localObjects = this->location->Get_objects() ;
 
     for( vector<Object*>::iterator it = localObjects.begin() ; it != localObjects.end() ; it++ )
     {

@@ -7,12 +7,15 @@ public:
            std::string description ="",
            std::string useDescription ="",
            bool pickable = false ) ;
+
     std::string Get_name();
     std::string Get_description();
     std::string Get_useDescription() ;
+
     bool Get_pickable();
 
     virtual bool Is_Path() ;
+    virtual std::string Display() ;
 
 protected:
     std::string name ;

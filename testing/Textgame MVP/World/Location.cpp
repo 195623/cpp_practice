@@ -16,17 +16,17 @@ void Location::Set_objects( vector<Object*> objects )
 
 
 
-string Location::Show_name()
+string Location::Get_name()
 {
     return this->name ;
 }
 
-string Location::Show_description()
+string Location::Get_description()
 {
     return this->description ;
 }
 
-vector<Object*> Location::Show_objects( string type )
+vector<Object*> Location::Get_objects( string type )
 {
     vector<Object*> output ;
 
@@ -39,7 +39,7 @@ vector<Object*> Location::Show_objects( string type )
             if ( (*it)->Is_Path() ) output.push_back(*it) ;
         }
     }
-    else cout << "Location::Show_objects( string type ): \"" << type << "\" is an invalid type.\n" ;
+    else cout << "Location::Get_objects( string type ): \"" << type << "\" is an invalid type.\n" ;
 
     return output ;
 

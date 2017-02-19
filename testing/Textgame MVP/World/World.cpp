@@ -6,22 +6,6 @@ using namespace std ;
 
 
 
-void World::Store_Locations_In_Paths( vector<Location*> locations )
-{
-    for( vector<Location*>::iterator it = locations.begin() ; it != locations.end() ; it++ )
-    {
-        vector<Object*> pathObjects = (*it)->Show_objects("Path") ;
-
-        for( vector<Object*>::iterator it = pathObjects.begin() ; it != pathObjects.end() ; it++ )
-        {
-
-        }
-    }
-
-}
-
-
-
 World::World( vector<Location*> locations )
 {
     this->locations = locations ;

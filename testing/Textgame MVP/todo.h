@@ -6,6 +6,8 @@ Take...drop
 
 try...catch
 
+class Direction
+
 if ( x == "on" ) ------> if ( Is_Preposition( x ) )
 
 Functions for: checking all locations,
@@ -13,7 +15,7 @@ Functions for: checking all locations,
                checking inconsistencies/errors in world's objects
                checking for invalid names (eg. names similar to command-words)
 
-MVP Prototype: objects, paths, walking agents
+MVP Prototype: walking agents
 
 Additional_1: doors, directions, keys
 
