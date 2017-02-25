@@ -33,6 +33,16 @@ Command Player::Get_Command()
 }
 
 
+Location* Player::Get_location()
+{
+    return this->location ;
+}
+
+void Player::Set_location( Location* location )
+{
+    this->location = location ;
+}
+
 string Player::Look_Around()
 {
     vector<Object*> localObjects = this->location->Get_objects() ;
@@ -113,26 +123,7 @@ string Player::Execute_Command( Command command )
         {
             if( target != "" )
             {
-                if( foundTarget->Is_Path() )
-                {
-                    Path* foundPath = (Path*) foundTarget ;
-
-                    Path* pathExit = foundPath->Get_targetPointer() ;
-
-                    if( pathExit != NULL )
-                    {
-                        Location* exitLocation = pathExit->Get_location() ;
-
-                        if( exitLocation != NULL )
-                        {
-                            this->location = exitLocation ;
-                            output = foundPath->Get_useDescription() ;
-                        }
-                        else output = "[The exit-path of this path has a NULL location pointer.]" ;
-                    }
-                    else output = "[This path has an empty pointer to its exit-path.]" ;
-                }
-                else output = foundTarget->Get_useDescription() ;
+                output = foundTarget->Get_Used(this);
             }
             else output = "Use what?" ;
         }
@@ -150,26 +141,12 @@ string Player::Execute_Command( Command command )
                 {
                     Path* foundPath = (Path*) dirObject ;
 
-                    Path* pathExit = foundPath->Get_targetPointer() ;
-
-                    if( pathExit != NULL )
-                    {
-                        Location* exitLocation = pathExit->Get_location() ;
-
-                        if( exitLocation != NULL )
-                        {
-                            this->location = exitLocation ;
-                            output = foundPath->Get_useDescription() ;
-                        }
-                        else output = "[The exit-path of this path has a NULL location pointer.]" ;
-                    }
-                    else output = "[This path has an empty pointer to its exit-path.]" ;
+                    output = foundPath->Get_Used(this);
                 }
 
         }
         else output = "No path in that direction." ;
 
-        //output = "This is a directional command." ;
     }
     else output = "[Invalid action-word.]";
 

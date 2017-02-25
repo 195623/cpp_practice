@@ -1,5 +1,7 @@
 #include <iostream>
 
+class Player ;
+
 class Object
 {
 public:
@@ -16,6 +18,8 @@ public:
 
     virtual bool Is_Path() ;
     virtual std::string Display() ;
+
+    virtual std::string Get_Used( Player* player ) ;
 
 protected:
     std::string name ;

@@ -10,8 +10,13 @@ public:
     Player( Location* location ) ;
     ~Player() ;
     Command Get_Command() ;
+
+    Location* Get_location();
+    void Set_location( Location* location ) ;
+
     std::string Look_Around();
     std::string Execute_Command( Command command ) ;
+
     Object* Find_Object( std::string text, std::string searchFor = "name" ) ;
 
     bool Is_Direction( std::string text ) ;

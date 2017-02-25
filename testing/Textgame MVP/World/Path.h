@@ -1,6 +1,7 @@
 class Object ;
 class Location ;
 class Direction ;
+class Player ;
 
 class Path : public Object
 {
@@ -12,6 +13,8 @@ public:
           std::string targetDirectory = "",
           Location* location = NULL ) ;
     //void Insert_Location_Pointer( Location* location ) ;
+
+    virtual std::string Get_Used( Player* player ) ;
     void Set_targetPointer( Path* targetPointer ) ;
 
     std::string Get_directionName();

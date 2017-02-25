@@ -19,6 +19,14 @@ Path::Path( string name,
     if(!this->direction->Is_Valid()) cout << "\"" << Get_PathID() << "\" has an invalid directionName: \"" << directionName << "\"\n\n" ;
 }
 
+string Path::Get_Used( Player* player )
+{
+    Location* exitLocation = this->Get_targetPointer()->Get_location() ;
+    player->Set_location(exitLocation) ;
+
+    return this->Get_useDescription() ;
+}
+
 void Path::Set_targetPointer( Path* targetPointer )
 {
     this->targetPointer = targetPointer ;

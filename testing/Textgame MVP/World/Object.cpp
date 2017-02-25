@@ -9,6 +9,11 @@ Object::Object(string name, string description, string useDescription, bool pick
     this->pickable = pickable ;
 }
 
+std::string Object::Get_Used( Player* player )
+{
+    return this->Get_useDescription();
+}
+
 bool Object::Is_Path()
 {
     return false ;
