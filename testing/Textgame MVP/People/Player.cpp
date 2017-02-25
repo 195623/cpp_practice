@@ -41,8 +41,22 @@ string Player::Look_Around()
 
     for( vector<Object*>::iterator it = localObjects.begin() ; it != localObjects.end() ; it++ )
     {
-        objectList += (*it)->Display();
-        objectList += '\n' ;
+        if( !(*it)->Is_Path() )
+        {
+            objectList += (*it)->Display();
+            objectList += '\n' ;
+        }
+    }
+
+    objectList+= '\n' ;
+
+    for( vector<Object*>::iterator it = localObjects.begin() ; it != localObjects.end() ; it++ )
+    {
+        if( (*it)->Is_Path() )
+        {
+            objectList += (*it)->Display();
+            objectList += '\n' ;
+        }
     }
 
     return this->location->Get_name() + "\n\n" +

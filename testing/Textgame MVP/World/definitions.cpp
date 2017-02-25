@@ -36,7 +36,14 @@ void Define_Locations( vector<Location*>* locations )
                                 "Room #2/door",
                                 location) ) ;
 
-    location->Return_Container()->Set_contents(objects);
+    objects.push_back( new Path("small door",
+                                "Simple and wooden.",
+                                "You push the door open, and enter the room beyond.",
+                                "n",
+                                "Room #2/small door",
+                                location) ) ;
+
+    location->Return_container()->Set_contents(objects);
 
     (*locations).push_back( location ) ;
 
@@ -60,7 +67,14 @@ void Define_Locations( vector<Location*>* locations )
                                 "Room #1/door",
                                 location) ) ;
 
-    location->Return_Container()->Set_contents(objects);
+    objects.push_back( new Path("small door",
+                                "Simple and wooden.",
+                                "You push the door open, and enter the room beyond.",
+                                "s",
+                                "Room #1/small door",
+                                location) ) ;
+
+    location->Return_container()->Set_contents(objects);
     (*locations).push_back( location ) ;
 
     vector<Path*> allPaths = All_Paths_On_One_List( *locations ) ;

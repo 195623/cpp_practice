@@ -8,6 +8,8 @@ try...catch
 
 class Direction
 
+Sort paths by direction
+
 if ( x == "on" ) ------> if ( Is_Preposition( x ) )
 
 Functions for: checking all locations,
@@ -17,7 +19,7 @@ Functions for: checking all locations,
 
 MVP Prototype: walking agents
 
-Additional_1: doors, directions, keys
+Additional_1: doors, keys
 
 Additional_2: boxes, chests, switches
 

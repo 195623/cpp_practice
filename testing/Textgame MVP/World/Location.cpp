@@ -9,7 +9,7 @@ Location::Location( string name, string description, vector<Object*> objects )
 
 }
 
-Container* Location::Return_Container()
+Container* Location::Return_container()
 {
     return this->container ;
 }

@@ -11,7 +11,7 @@ public:
               std::string description = "",
               std::vector<Object*> objects = std::vector<Object*>() ) ;
 
-    Container* Return_Container();
+    Container* Return_container();
 
     void Set_objects( std::vector<Object*> objects ) ;
 

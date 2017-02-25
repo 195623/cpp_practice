@@ -18,6 +18,8 @@ public:
     std::string Get_PathID() ; // location's name + path's name
     std::string Get_targetDirectory() ;
 
+    Direction* Get_direction() ;
+
     Path* Get_targetPointer() ;
     Location* Get_location() ;
 

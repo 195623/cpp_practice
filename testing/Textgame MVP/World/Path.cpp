@@ -29,6 +29,11 @@ string Path::Get_directionName()
     return this->direction->Get_name() ;
 }
 
+Direction* Path::Get_direction()
+{
+    return this->direction ;
+}
+
 string Path::Get_PathID()
 {
     if( location != NULL ) return location->Get_name() + '/' + this->name ;
