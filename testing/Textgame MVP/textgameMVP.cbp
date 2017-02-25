@@ -37,6 +37,8 @@
 		<Unit filename="People/Player.h" />
 		<Unit filename="Tools/Command.cpp" />
 		<Unit filename="Tools/Command.h" />
+		<Unit filename="Tools/Container.cpp" />
+		<Unit filename="Tools/Container.h" />
 		<Unit filename="Tools/Direction.cpp" />
 		<Unit filename="Tools/Direction.h" />
 		<Unit filename="Tools/Parser.cpp" />

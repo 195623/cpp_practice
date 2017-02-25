@@ -4,6 +4,12 @@ using namespace std;
 Player::Player( Location* location )
 {
     this->location = location ;
+    this->inventory = new Container();
+}
+
+Container* Player::Get_inventory()
+{
+    return this->inventory ;
 }
 
 
@@ -130,6 +136,22 @@ string Player::Execute_Command( Command command )
         else
         {
             output = "[No commands with prepositions... yet." ;
+        }
+    }
+    else if ( action == "take" )
+    {
+        if( preposition == "" )
+        {
+            if( target != "" )
+            {
+                // check pickability
+                // remove foundTarget from location and add to player's inventory
+            }
+            else output = "Take what?" ;
+        }
+        else
+        {
+            output = "[No \"take\" command with a preposition... yet." ;
         }
     }
     else if ( tool == "" && preposition == "" && target == "" && Is_Direction( action ) )

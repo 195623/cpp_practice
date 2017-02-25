@@ -21,6 +21,9 @@ public:
 
     bool Is_Direction( std::string text ) ;
 
+    Container* Get_inventory();
+
 private:
     Location* location ;
+    Container* inventory ;
 };
