@@ -144,7 +144,7 @@ bool Player::Is_Direction( string text )
 
     str = find(dirs,dirs+10,text) ;
 
-    auto emptyITERATOR = find(dirs,dirs+10,"") ;
+    string* emptyITERATOR = (string*)find(dirs,dirs+10,"") ;
 
     if( str != emptyITERATOR ) return true ;
 
