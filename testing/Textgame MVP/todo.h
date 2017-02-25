@@ -6,10 +6,6 @@ Take...drop
 
 try...catch
 
-class Direction
-
-Sort paths by direction
-
 if ( x == "on" ) ------> if ( Is_Preposition( x ) )
 
 Functions for: checking all locations,

@@ -143,7 +143,33 @@ string Player::Execute_Command( Command command )
     }
     else if ( tool == "" && preposition == "" && target == "" && Is_Direction( action ) )
     {
-        output = "This is a directional command." ;
+        Object* dirObject = Find_Object(action,"direction");
+        if( dirObject != NULL )
+        {
+                if( dirObject->Is_Path() )
+                {
+                    Path* foundPath = (Path*) dirObject ;
+
+                    Path* pathExit = foundPath->Get_targetPointer() ;
+
+                    if( pathExit != NULL )
+                    {
+                        Location* exitLocation = pathExit->Get_location() ;
+
+                        if( exitLocation != NULL )
+                        {
+                            this->location = exitLocation ;
+                            output = foundPath->Get_useDescription() ;
+                        }
+                        else output = "[The exit-path of this path has a NULL location pointer.]" ;
+                    }
+                    else output = "[This path has an empty pointer to its exit-path.]" ;
+                }
+
+        }
+        else output = "No path in that direction." ;
+
+        //output = "This is a directional command." ;
     }
     else output = "[Invalid action-word.]";
 
@@ -166,13 +192,29 @@ bool Player::Is_Direction( string text )
 }
 
 
-Object* Player::Find_Object( std::string objectName )
+Object* Player::Find_Object( string text, string searchFor )
 {
     vector<Object*> localObjects = this->location->Get_objects() ;
 
+    if( searchFor == "name" )
     for( vector<Object*>::iterator it = localObjects.begin() ; it != localObjects.end() ; it++ )
     {
-        if( (*it)->Get_name() == objectName ) return *it ;
+        if( (*it)->Get_name() == text ) return *it ;
+    }
+
+
+    if( searchFor == "direction" )
+    for( vector<Object*>::iterator it = localObjects.begin() ; it != localObjects.end() ; it++ )
+    {
+        if( (*it)->Is_Path() )
+        {
+            Path* path = (Path*) *it ;
+            if( path->Get_directionName() == text )
+            {
+                return *it ;
+            }
+
+        }
     }
 
     return NULL ;

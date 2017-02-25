@@ -18,6 +18,7 @@ void Define_Locations( vector<Location*>* locations )
     objects.clear() ;
     location = NULL ;
 
+
     name = "Room #1" ;
     description = "It seems to be in the middle of remodeling.\n"
                   "Bare walls, no furniture, wooden floor stained with fresh white paint..." ;
