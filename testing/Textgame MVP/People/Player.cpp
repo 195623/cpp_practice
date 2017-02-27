@@ -90,8 +90,9 @@ string Player::Execute_Command( Command command )
            preposition = command.Get_preposition(),
            target      = command.Get_target() ;
 
-    Object* foundTool = NULL ;
-    Object* foundTarget = NULL ;
+    Object* foundTool      = NULL ;
+    Object* foundTarget    = NULL ;
+    Object* foundTargetInv = NULL ;
 
     if( tool != "" )
     {
@@ -103,8 +104,10 @@ string Player::Execute_Command( Command command )
     if( target != "" )
     {
         foundTarget = Find_Object(target);
+        foundTargetInv = Find_Object(target,"name","inventory");
 
-        if( foundTarget == NULL ) output += "\nThere are no " + target + "s here." ;
+        if( foundTarget    == NULL && action != "drop" ) output += "\nThere are no " + target + "s here." ;
+        if( foundTargetInv == NULL && action == "drop" ) output += "\nYou have no " + target + "s in your inventory." ;
     }
 
 /*return*/
@@ -144,10 +147,43 @@ string Player::Execute_Command( Command command )
         {
             if( target != "" )
             {
-                // check pickability
-                // remove foundTarget from location and add to player's inventory
+                if( foundTarget->Is_Pickable() )
+                {
+                    output = "You picked up the " + foundTarget->Get_name() + "." ;
+                    this->Get_inventory()->Add_Object(foundTarget);
+                    this->Get_location()->Return_container()->Remove_Object(foundTarget);
+                }
+                else
+                {
+                    output = "The " + foundTarget->Get_name() + " is immovable." ;
+                }
             }
             else output = "Take what?" ;
+        }
+        else
+        {
+            output = "[No \"take\" command with a preposition... yet." ;
+        }
+    }
+    else if ( action == "drop" )
+    {
+        if( preposition == "" )
+        {
+            if( target != "" )
+            {
+                if( foundTargetInv->Is_Pickable() )
+                {
+                    output = "You dropped the " + foundTargetInv->Get_name() + "." ;
+                    this->Get_location()->Return_container()->Add_Object(foundTargetInv);
+                    this->Get_inventory()->Remove_Object(foundTargetInv);
+
+                }
+                else
+                {
+                    output = "The " + foundTarget->Get_name() + " is immovable." ;
+                }
+            }
+            else output = "Drop what?" ;
         }
         else
         {
@@ -191,19 +227,26 @@ bool Player::Is_Direction( string text )
 }
 
 
-Object* Player::Find_Object( string text, string searchFor )
+Object* Player::Find_Object( string text, string searchFor, string where )
 {
-    vector<Object*> localObjects = this->location->Get_objects() ;
+    vector<Object*> objects ;
+
+    if( where == "local" ) objects = this->location->Get_objects();
+
+    else if ( where == "inventory" ) objects = this->inventory->Return_contents() ;
+
+    else return NULL ;
+
 
     if( searchFor == "name" )
-    for( vector<Object*>::iterator it = localObjects.begin() ; it != localObjects.end() ; it++ )
+    for( vector<Object*>::iterator it = objects.begin() ; it != objects.end() ; it++ )
     {
         if( (*it)->Get_name() == text ) return *it ;
     }
 
 
     if( searchFor == "direction" )
-    for( vector<Object*>::iterator it = localObjects.begin() ; it != localObjects.end() ; it++ )
+    for( vector<Object*>::iterator it = objects.begin() ; it != objects.end() ; it++ )
     {
         if( (*it)->Is_Path() )
         {

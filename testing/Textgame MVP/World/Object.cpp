@@ -39,7 +39,7 @@ string Object::Get_useDescription()
     return this->useDescription ;
 }
 
-bool Object::Get_pickable()
+bool Object::Is_Pickable()
 {
     return this->pickable ;
 }

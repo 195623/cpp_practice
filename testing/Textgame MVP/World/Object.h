@@ -14,7 +14,7 @@ public:
     std::string Get_description();
     std::string Get_useDescription() ;
 
-    bool Get_pickable();
+    bool Is_Pickable();
 
     virtual bool Is_Path() ;
     virtual std::string Display() ;

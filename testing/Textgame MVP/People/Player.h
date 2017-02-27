@@ -17,7 +17,7 @@ public:
     std::string Look_Around();
     std::string Execute_Command( Command command ) ;
 
-    Object* Find_Object( std::string text, std::string searchFor = "name" ) ;
+    Object* Find_Object( std::string text, std::string searchFor = "name", std::string where = "local" ) ;
 
     bool Is_Direction( std::string text ) ;
 
