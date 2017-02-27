@@ -55,31 +55,35 @@ string Player::Look_Around()
 
     std::string objectList = "" ;
 
-    for( vector<Object*>::iterator it = localObjects.begin() ; it != localObjects.end() ; it++ )
-    {
-        if( !(*it)->Is_Path() )
-        {
-            objectList += (*it)->Display();
-            objectList += '\n' ;
-        }
-    }
+    objectList += Return_Objects_String( localObjects, "not Path" ) ;
 
     objectList+= '\n' ;
 
-    for( vector<Object*>::iterator it = localObjects.begin() ; it != localObjects.end() ; it++ )
+    objectList += Return_Objects_String( localObjects, "Path" ) ;
+
+    string locationString = this->location->Get_name() + "\n\n" +
+           this->location->Get_description() + "\n\n" ;
+
+    return locationString + objectList + '\n' ;
+}
+
+string Player::Return_Objects_String( vector<Object*> objects, string type )
+{
+    string objectList = "" ;
+
+    for( vector<Object*>::iterator it = objects.begin() ; it != objects.end() ; it++ )
     {
-        if( (*it)->Is_Path() )
+        if(   type == "" ||
+            ( type == "Path" && (*it)->Is_Path() ) ||
+            ( type == "not Path" && !(*it)->Is_Path() ) )
         {
             objectList += (*it)->Display();
             objectList += '\n' ;
         }
     }
 
-    return this->location->Get_name() + "\n\n" +
-           this->location->Get_description() + "\n\n" +
-           objectList + '\n' ;
+    return objectList ;
 }
-
 
 string Player::Execute_Command( Command command )
 {
@@ -176,7 +180,6 @@ string Player::Execute_Command( Command command )
                     output = "You dropped the " + foundTargetInv->Get_name() + "." ;
                     this->Get_location()->Return_container()->Add_Object(foundTargetInv);
                     this->Get_inventory()->Remove_Object(foundTargetInv);
-
                 }
                 else
                 {
@@ -190,20 +193,29 @@ string Player::Execute_Command( Command command )
             output = "[No \"take\" command with a preposition... yet." ;
         }
     }
-    else if ( tool == "" && preposition == "" && target == "" && Is_Direction( action ) )
+    else if ( tool == "" && preposition == "" && target == "" )
     {
-        Object* dirObject = Find_Object(action,"direction");
-        if( dirObject != NULL )
+        if( Is_Direction(action) )
         {
-                if( dirObject->Is_Path() )
-                {
-                    Path* foundPath = (Path*) dirObject ;
+            Object* dirObject = Find_Object(action,"direction");
+            if( dirObject != NULL )
+            {
+                    if( dirObject->Is_Path() )
+                    {
+                        Path* foundPath = (Path*) dirObject ;
 
-                    output = foundPath->Get_Used(this);
-                }
+                        output = foundPath->Get_Used(this);
+                    }
 
+            }
+            else output = "No path in that direction." ;
         }
-        else output = "No path in that direction." ;
+        else if ( action == "inventory" )
+        {
+            output = "Inventory:\n\n" + Return_Objects_String(inventory->Return_contents()) ;
+        }
+
+
 
     }
     else output = "[Invalid action-word.]";

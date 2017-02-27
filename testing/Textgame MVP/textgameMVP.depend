@@ -36,11 +36,12 @@
 	<iostream>
 	<vector>
 
-1488211736 c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\people\player.h
+1488216141 c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\people\player.h
 	<iostream>
 	<algorithm>
+	<vector>
 
-1488211736 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\people\player.cpp
+1488216488 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\people\player.cpp
 	"../headers.h"
 
 1487494340 source:c:\users\administrator\desktop\edukacja\programming\c++\textgames\textgame mvp\tools\command.cpp

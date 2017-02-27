@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <vector>
 
 class Location ;
 class Command ;
@@ -15,6 +16,7 @@ public:
     void Set_location( Location* location ) ;
 
     std::string Look_Around();
+    std::string Return_Objects_String( std::vector<Object*> objects, std::string type = "" ) ;
     std::string Execute_Command( Command command ) ;
 
     Object* Find_Object( std::string text, std::string searchFor = "name", std::string where = "local" ) ;
