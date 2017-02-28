@@ -6,7 +6,7 @@ class Character
 public:
     Character(std::string name ="", Location* location = NULL);
 
-private:
+protected:
     std::string name ;
     Location* location ;
 };

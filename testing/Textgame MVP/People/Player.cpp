@@ -1,9 +1,8 @@
 #include "../headers.h"
 using namespace std;
 
-Player::Player( Location* location )
+Player::Player( string name, Location* location ) : Character(name,location)
 {
-    this->location = location ;
     this->inventory = new Container();
 }
 

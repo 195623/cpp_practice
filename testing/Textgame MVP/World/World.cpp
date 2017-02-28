@@ -9,7 +9,7 @@ using namespace std ;
 World::World( vector<Location*> locations )
 {
     this->locations = locations ;
-    if( locations.size() >=1 ) this->player = new Player(locations[0]) ;
+    if( locations.size() >=1 ) this->player = new Player("Player",locations[0]) ;
     else cout << "There are zero locations. Can't put the player anywhere." ;
 
     Sort_All_Paths() ;

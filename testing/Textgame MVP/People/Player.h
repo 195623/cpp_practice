@@ -2,13 +2,14 @@
 #include <algorithm>
 #include <vector>
 
+class Character ;
 class Location ;
 class Command ;
 
-class Player
+class Player : public Character
 {
 public:
-    Player( Location* location ) ;
+    Player( std::string name = "", Location* location = NULL) ;
     ~Player() ;
     Command Get_Command() ;
 
@@ -26,6 +27,5 @@ public:
     Container* Get_inventory();
 
 private:
-    Location* location ;
     Container* inventory ;
 };
